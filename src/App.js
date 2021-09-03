@@ -1,9 +1,11 @@
-import Users from './components/Users';
+import UserFinder from './components/UserFinder';
+
+import classes from './components/UserFinder.module.css';
 
 function App() {
   return (
-    <div>
-      <Users />
+    <div className={classes.finder}>
+      <UserFinder />
     </div>
   );
 }
