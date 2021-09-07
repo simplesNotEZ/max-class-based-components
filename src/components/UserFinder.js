@@ -1,14 +1,18 @@
 import { Fragment, useState, useEffect, Component } from 'react';
 
 import Users from './Users';
+import UsersContext from '../store/users-context';
 
-const DUMMY_USERS = [
-  { id: 'u1', name: 'Max' },
-  { id: 'u2', name: 'Manuel' },
-  { id: 'u3', name: 'Julie' },
-];
+// We're gonna use Context instead of below, which is provided in App.js
+// const DUMMY_USERS = [
+//   { id: 'u1', name: 'Max' },
+//   { id: 'u2', name: 'Manuel' },
+//   { id: 'u3', name: 'Julie' },
+// ];
 
 class UserFinder extends Component {
+  static contextType = UsersContext;
+
   constructor() {
     // super calls the constructor function of the extended class--Component
     super();
@@ -21,14 +25,14 @@ class UserFinder extends Component {
   componentDidMount() {
     console.log("%c componentDidMount", "color: green;");
     // http-requests are typically sent here
-    this.setState({ filteredUsers: DUMMY_USERS})
+    this.setState({ filteredUsers: this.context.users})
   }
 
   // used in place of useEffect
   componentDidUpdate(prevProps, prevState) {
     if (prevState.searchTerm !== this.state.searchTerm) {
       this.setState({
-        filteredUsers: DUMMY_USERS.filter((user) => {
+        filteredUsers: this.context.users.filter((user) => {
           return user.name.includes(this.state.searchTerm);
         })
       })

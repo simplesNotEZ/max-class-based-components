@@ -13,10 +13,12 @@ function App() {
   const usersContext = {
     users: DUMMY_USERS
   }
-  
+
   return (
-    <UsersContext.Provider value={usersContext} className={classes.finder}>
-      <UserFinder />
+    <UsersContext.Provider value={usersContext} >
+      <div className={classes.finder}>
+        <UserFinder />
+      </div>
     </UsersContext.Provider>
   );
 }
