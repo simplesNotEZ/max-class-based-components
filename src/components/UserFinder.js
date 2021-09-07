@@ -1,6 +1,7 @@
 import { Fragment, useState, useEffect, Component } from 'react';
 
 import Users from './Users';
+import ErrorBoundary from './ErrorBoundary';
 import UsersContext from '../store/users-context';
 
 // We're gonna use Context instead of below, which is provided in App.js
@@ -49,7 +50,9 @@ class UserFinder extends Component {
     return (
       <Fragment>
         <input type='search' onChange={this.searchChangeHandler.bind(this)} />
-        <Users users={this.state.filteredUsers} />
+        <ErrorBoundary>
+          <Users users={this.state.filteredUsers} />
+        </ErrorBoundary>
       </Fragment>
     );
   }
