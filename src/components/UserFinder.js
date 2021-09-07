@@ -40,7 +40,7 @@ class UserFinder extends Component {
     this.setState({searchTerm: event.target.value});
   }
 
-  // built in to React render method
+  // the render method is built-in to React
   render() {
     return (
       <Fragment>
